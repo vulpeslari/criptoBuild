@@ -40,7 +40,7 @@ async function main(){
 	window.Namespace.acertos = [];
 	window.parent?.postMessage('construct-ready', '*');
 	//waitForMessage();
-	//window.Namespace.message = "04380458-d071-70c2-622c-bf703e64af98,chapter,25ba2c14-a291-4f90-a444-414252245737";
+	//window.Namespace.message = "4438d4c8-90c1-7099-0bfc-e8bd42fa23c0,chapter,25ba2c14-a291-4f90-a444-414252245737";
 	window.Namespace.nameSection;
 	window.Namespace.nameChapter;
 	
@@ -263,7 +263,7 @@ localVars.indice = indice;
 
 	},
 
-	async FolhaDeEventos1_Event167_Act22(runtime, localVars)
+	async FolhaDeEventos1_Event167_Act23(runtime, localVars)
 	{
 		window.parent.postMessage({ type: 'GAME_FINISHED' }, '*');
 	},
@@ -443,6 +443,109 @@ localVars.indice = indice;
 		.then(response => response.json())
 		.then(data => console.log('Success:', data))
 		.catch(error => console.error('Error:', error));
+	},
+
+	async FolhaDeEventos1_Event267_Act3(runtime, localVars)
+	{
+		const textQuestoes = runtime.objects.textQuestao.getAllInstances();
+		
+		// CALCULO DE DIFICULDADE MÉDIA
+		
+		// FACEIS
+		const questoesFaceis = textQuestoes.filter(instancia => {
+		  return (instancia.instVars.dificuldade === 1);
+		});
+		
+		// MEDIAS
+		const questoesMedias = textQuestoes.filter(instancia => {
+		  return (instancia.instVars.dificuldade === 2);
+		});
+		
+		// DIFIVEIS
+		const questoesDificeis = textQuestoes.filter(instancia => {
+		  return (instancia.instVars.dificuldade === 3);
+		});
+		
+		localVars.dificuldade = (((questoesFaceis.length + (questoesMedias.length*2) + (questoesDificeis.length * 3))/(textQuestoes.length*3))*100)
+		
+		// CALCULO DE NÚMERO DE TENTATIVAS
+		
+		textQuestoes.forEach(textQuestao => {
+		    if (textQuestao.instVars.tentativas !== undefined && typeof textQuestao.instVars.tentativas === 'number') {
+		        localVars.tentativas += textQuestao.instVars.tentativas;
+		    }
+		});
+	},
+
+	async FolhaDeEventos1_Event267_Act4(runtime, localVars)
+	{
+		async function enviarDados() {
+		  const tempo = localVars.tempo;
+		  const tentativas = localVars.tentativas;
+		  const pontuacao = localVars.scoreJogador;
+		  const dificuldade = localVars.dificuldade;
+		
+		  let pontuacaoIA = pontuacao;
+		  let recomendacao = "media";
+		
+		  // Tenta obter resposta da IA
+		  try {
+		    const respostaIA = await fetch("https://pzk3r3b4b4.execute-api.us-east-1.amazonaws.com/dev/nivel", {
+		      method: "POST",
+		      headers: { "Content-Type": "application/json" },
+		      body: JSON.stringify({
+		        pontuacao,
+		        tempo,
+		        dificuldade,
+		        tentativas
+		      })
+		    });
+		
+		    if (!respostaIA.ok) throw new Error("Erro na resposta da IA");
+		
+		    const dataIA = await respostaIA.json();
+		    pontuacaoIA = dataIA.pontuacao || pontuacao;
+		    recomendacao = dataIA.recomendacao || "media";
+		
+		    console.log("Resposta IA:", { pontuacaoIA, recomendacao });
+		
+		  } catch (erro) {
+		    console.warn("Erro ao obter dados da IA:", erro);
+		    // Continua mesmo com erro
+		  }
+		
+		console.log("AAAAAAAAAAAAAAAAAAAAAAAAA:", { pontuacaoIA, recomendacao })
+		
+		  // Envia para o back, independentemente da IA
+		  try {
+		    const [sub, tipo, id] = window.Namespace.message.split(',');
+		    const jsonObjectBack = {
+		      sub: sub,
+		      [tipo === "section" ? "idSection" : "idChapter"]: id,
+		      pontuacao: pontuacaoIA,
+		      recomendacao: recomendacao
+		    };
+		
+		    console.log("Enviando ao back:", jsonObjectBack);
+		
+		    const respostaBack = await fetch("https://ereik07xl4.execute-api.us-east-1.amazonaws.com/dev/nivelPlayer", {
+		      method: "POST",
+		      headers: { "Content-Type": "application/json" },
+		      body: JSON.stringify(jsonObjectBack)
+		    });
+		
+		    if (!respostaBack.ok) throw new Error("Erro na resposta do back");
+		
+		    const respostaJson = await respostaBack.json();
+		    console.log("Sucesso:", respostaJson);
+		
+		  } catch (erro) {
+		    console.error("Erro ao enviar para o back:", erro);
+		  }
+		}
+		
+		enviarDados();
+		
 	}
 };
 
