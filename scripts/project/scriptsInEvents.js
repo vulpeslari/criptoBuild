@@ -25,7 +25,7 @@ function waitForMessage() {
 window.Namespace.reload = false;
 window.Namespace.saveJSON;
 window.Namespace.time = 0;
-window.Namespace.session ={};
+window.Namespace.session = {};
 window.Namespace.session.rawData = "";
 window.Namespace.tipContentUsed = false;
 window.Namespace.tipLetterRandom = "";
