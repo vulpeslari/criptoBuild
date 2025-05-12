@@ -1879,10 +1879,6 @@ self.C3_ExpressionFuncs = [
 		},
 		() => "Explosão",
 		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => Math.floor(v0.GetValue());
-		},
-		p => {
 			const n0 = p._GetNode(0);
 			return () => (n0.ExpInstVar() + 1);
 		},
@@ -2034,17 +2030,7 @@ self.C3_ExpressionFuncs = [
 			return () => and(((n0.ExpObject()) === (n1.ExpObject()) ? 1 : 0), ((n2.ExpObject()) === (n3.ExpObject()) ? 1 : 0));
 		},
 		() => -281492157629439,
-		() => "manage save",
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			const n1 = p._GetNode(1);
-			return () => ((v0.GetValue() / n1.ExpObject()) * 100);
-		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			const v1 = p._GetNode(1).GetVar();
-			return () => ((v0.GetValue() / v1.GetValue()) * 100);
-		}
+		() => "manage save"
 ];
 
 

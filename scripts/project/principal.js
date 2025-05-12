@@ -33,7 +33,7 @@ async function OnBeforeProjectStart(runtime)
 	let isSecOrChap = parts[1] === "section";
 	let chapterID = isSecOrChap ? "" : parts[2];
 	let sectionID = isSecOrChap ? parts[2] : "";
-	//runtime.globalVars.idJogador = parts[0];
+	runtime.globalVars.idJogador = parts[0];
 	
 	saveExample = window.Namespace.session.rawData;
 	
@@ -485,8 +485,7 @@ async function OnBeforeProjectStart(runtime)
 				questionsSelected[j].question.resposta, 
 				questionsSelected[j].question.categoria, 
 				questionsSelected[j].question.dica,
-				questionsSelected[j].question.imagePath || "",
-				questionsSelected[j].question.dificuldade
+				questionsSelected[j].question.imagePath || ""
 			  );
 			}
 			
