@@ -118,8 +118,8 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Exps.int,
 		C3.Plugins.System.Cnds.CompareVar,
 		C3.Plugins.Text.Exps.Count,
-		C3.ScriptsInEvents.FolhaDeEventos1_Event167_Act22,
 		C3.Plugins.System.Cnds.TriggerOnce,
+		C3.ScriptsInEvents.FolhaDeEventos1_Event167_Act23,
 		C3.Plugins.System.Acts.SetTimescale,
 		C3.ScriptsInEvents.FolhaDeEventos1_Event169_Act20,
 		C3.Plugins.System.Cnds.Every,
@@ -147,7 +147,10 @@ self.C3_GetObjectRefTable = function () {
 		C3.ScriptsInEvents.FolhaDeEventos1_Event260_Act1,
 		C3.ScriptsInEvents.FolhaDeEventos1_Event263_Act1,
 		C3.ScriptsInEvents.FolhaDeEventos1_Event264_Act1,
-		C3.ScriptsInEvents.FolhaDeEventos1_Event265_Act1
+		C3.ScriptsInEvents.FolhaDeEventos1_Event265_Act1,
+		C3.Plugins.Sprite.Exps.Count,
+		C3.ScriptsInEvents.FolhaDeEventos1_Event267_Act3,
+		C3.ScriptsInEvents.FolhaDeEventos1_Event267_Act4
 	];
 };
 self.C3_JsPropNameTable = [
@@ -198,6 +201,7 @@ self.C3_JsPropNameTable = [
 	{isCorrect: 0},
 	{tempoQuestao: 0},
 	{tentativas: 0},
+	{dificuldade: 0},
 	{Fixar: 0},
 	{textQuestao: 0},
 	{botaoImagem: 0},
@@ -307,7 +311,8 @@ self.C3_JsPropNameTable = [
 	{idAnswer: 0},
 	{gap: 0},
 	{minBlocks: 0},
-	{tempo: 0}
+	{tempo: 0},
+	{scoreJogador: 0}
 ];
 
 self.InstanceType = {
