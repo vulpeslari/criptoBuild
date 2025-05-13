@@ -263,12 +263,12 @@ localVars.indice = indice;
 
 	},
 
-	async FolhaDeEventos1_Event167_Act23(runtime, localVars)
+	async FolhaDeEventos1_Event167_Act20(runtime, localVars)
 	{
 		window.parent.postMessage({ type: 'GAME_FINISHED' }, '*');
 	},
 
-	async FolhaDeEventos1_Event169_Act20(runtime, localVars)
+	async FolhaDeEventos1_Event169_Act18(runtime, localVars)
 	{
 		window.parent.postMessage({ type: 'GAME_FINISHED' }, '*');
 	},
@@ -484,13 +484,12 @@ localVars.indice = indice;
 		  const tentativas = localVars.tentativas;
 		  const pontuacao = localVars.scoreJogador;
 		  const dificuldade = localVars.dificuldade;
-		
-		  let pontuacaoIA = pontuacao;
-		  let recomendacao = "media";
+		  let pontuacaoIA = 0;
+		  let recomendacao = "";
 		
 		  // Tenta obter resposta da IA
 		  try {
-		    const respostaIA = await fetch("https://pzk3r3b4b4.execute-api.us-east-1.amazonaws.com/dev/nivel", {
+		    const respostaIA = await fetch("https://3.89.89.191.nip.io/nivel/", {
 		      method: "POST",
 		      headers: { "Content-Type": "application/json" },
 		      body: JSON.stringify({
@@ -501,22 +500,24 @@ localVars.indice = indice;
 		      })
 		    });
 		
-			console.log("pontuacao:" + pontuacao, "tempo" + tempo, "dificuldade: " + dificuldade, "tentativas:" + tentativas)
+			//console.log("pontuacao:" + pontuacao, "tempo" + tempo, "dificuldade: " + dificuldade, "tentativas:" + tentativas)
 		
 		    if (!respostaIA.ok) throw new Error("Erro na resposta da IA");
 		
 		    const dataIA = await respostaIA.json();
 		    pontuacaoIA = dataIA.pontuacao || pontuacao;
 		    recomendacao = dataIA.recomendacao || "media";
+			const score = runtime.objects.jogPontuacao.getFirstInstance();
+			score.text = Math.floor(pontuacaoIA).toString();
+			score.runtime.redraw();
 		
-		    console.log("Resposta IA:", { pontuacaoIA, recomendacao });
+		    //console.log("Resposta IA:", dataIA.pontuacao + " | " + dataIA.recomendacao);
 		
 		  } catch (erro) {
 		    console.warn("Erro ao obter dados da IA:", erro);
-		    // Continua mesmo com erro
 		  }
 		
-		console.log("AAAAAAAAAAAAAAAAAAAAAAAAA:", { pontuacaoIA, recomendacao })
+		//console.log("AAAAAAAAAAAAAAAAAAAAAAAAA:", { pontuacaoIA, recomendacao })
 		
 		  // Envia para o back, independentemente da IA
 		  try {
@@ -528,9 +529,9 @@ localVars.indice = indice;
 		      recomendacao: recomendacao
 		    };
 		
-		    console.log("Enviando ao back:", jsonObjectBack);
+		    //console.log("Enviando ao back:", jsonObjectBack);
 		
-		    const respostaBack = await fetch("https://3.89.89.191.nip.io/nivel/", {
+		    const respostaBack = await fetch("https://ereik07xl4.execute-api.us-east-1.amazonaws.com/dev/nivelPlayer", {
 		      method: "POST",
 		      headers: { "Content-Type": "application/json" },
 		      body: JSON.stringify(jsonObjectBack)
@@ -539,7 +540,7 @@ localVars.indice = indice;
 		    if (!respostaBack.ok) throw new Error("Erro na resposta do back");
 		
 		    const respostaJson = await respostaBack.json();
-		    console.log("Sucesso:", respostaJson);
+		    //console.log("Sucesso:", respostaJson);
 		
 		  } catch (erro) {
 		    console.error("Erro ao enviar para o back:", erro);

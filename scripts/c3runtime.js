@@ -1821,13 +1821,6 @@ self.C3_ExpressionFuncs = [
 		},
 		p => {
 			const v0 = p._GetNode(0).GetVar();
-			const v1 = p._GetNode(1).GetVar();
-			const v2 = p._GetNode(2).GetVar();
-			const v3 = p._GetNode(3).GetVar();
-			return () => ((((v0.GetValue()) === (0) ? 1 : 0)) ? (((v1.GetValue() / 1) * 10)) : (((v2.GetValue() / v3.GetValue()) * 100)));
-		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
 			const f1 = p._GetNode(1).GetBoundMethod();
 			const v2 = p._GetNode(2).GetVar();
 			const v3 = p._GetNode(3).GetVar();
@@ -1878,10 +1871,6 @@ self.C3_ExpressionFuncs = [
 			return () => Math.ceil(v0.GetValue());
 		},
 		() => "Explosão",
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => Math.floor(v0.GetValue());
-		},
 		p => {
 			const n0 = p._GetNode(0);
 			return () => (n0.ExpInstVar() + 1);
