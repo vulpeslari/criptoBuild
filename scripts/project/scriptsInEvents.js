@@ -32,7 +32,7 @@ window.Namespace.tipLetterRandom = "";
 window.Namespace.tipLetterSelected = "";
 
 async function main(){
-   	await waitForMessage()
+   	//await waitForMessage()
 	//console.log(window.Namespace.message)
 	// Função que verifica se deve recarregar o jogo salvo
 	window.Namespace.questionsOnly = [];
@@ -40,7 +40,7 @@ async function main(){
 	window.Namespace.acertos = [];
 	window.parent?.postMessage('construct-ready', '*');
 	//waitForMessage();
-	//window.Namespace.message = "4438d4c8-90c1-7099-0bfc-e8bd42fa23c0,chapter,25ba2c14-a291-4f90-a444-414252245737";
+	window.Namespace.message = "4438d4c8-90c1-7099-0bfc-e8bd42fa23c0,chapter,908ce6dd-a65b-4727-881b-f2b275eca101";
 	window.Namespace.nameSection;
 	window.Namespace.nameChapter;
 	
@@ -509,7 +509,7 @@ localVars.indice = indice;
 		    recomendacao = dataIA.recomendacao || "media";
 			const score = runtime.objects.jogPontuacao.getFirstInstance();
 			score.text = Math.floor(pontuacaoIA).toString();
-			score.runtime.redraw();
+			//score.runtime.redraw();
 		
 		    //console.log("Resposta IA:", dataIA.pontuacao + " | " + dataIA.recomendacao);
 		
@@ -540,7 +540,7 @@ localVars.indice = indice;
 		    if (!respostaBack.ok) throw new Error("Erro na resposta do back");
 		
 		    const respostaJson = await respostaBack.json();
-		    //console.log("Sucesso:", respostaJson);
+		    console.log("Sucesso:", respostaJson);
 		
 		  } catch (erro) {
 		    console.error("Erro ao enviar para o back:", erro);
