@@ -522,19 +522,15 @@ localVars.indice = indice;
 		  // Envia para o back, independentemente da IA
 		  try {
 		    const [sub, tipo, id] = window.Namespace.message.split(',');
-		    const jsonObjectBack = {
-		      sub: sub,
-		      [tipo === "section" ? "idSection" : "idChapter"]: id,
-		      pontuacao: pontuacaoIA,
-		      recomendacao: recomendacao
-		    };
-		
-		    console.log("Enviando ao back:", jsonObjectBack);
 		
 		    const respostaBack = await fetch("https://ereik07xl4.execute-api.us-east-1.amazonaws.com/dev/nivelPlayer", {
 		      method: "POST",
 		      headers: { "Content-Type": "application/json" },
-		      body: JSON.stringify(jsonObjectBack)
+		      body: JSON.stringify({sub: sub,
+				[tipo === "section" ? "idSection" : "idChapter"]: id,
+				pontuacao: pontuacaoIA,
+				recomendacao: recomendacao
+				})
 		    });
 		
 		    //if (!respostaBack.ok) throw new Error("Erro na resposta do back");
@@ -544,13 +540,10 @@ localVars.indice = indice;
 		
 		  } catch (erro) {
 		    console.error("Erro ao enviar para o back:", erro);
-			const respostaJsonn = await respostaBack.json();
-		    console.log("erro:", respostaJsonn);
 		  }
 		}
 		
 		enviarDados();
-		
 	}
 };
 
