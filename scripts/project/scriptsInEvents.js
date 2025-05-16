@@ -32,7 +32,7 @@ window.Namespace.tipLetterRandom = "";
 window.Namespace.tipLetterSelected = "";
 
 async function main(){
-   	//await waitForMessage()
+   	await waitForMessage()
 	//console.log(window.Namespace.message)
 	// Função que verifica se deve recarregar o jogo salvo
 	window.Namespace.questionsOnly = [];
@@ -40,7 +40,7 @@ async function main(){
 	window.Namespace.acertos = [];
 	window.parent?.postMessage('construct-ready', '*');
 	//waitForMessage();
-	window.Namespace.message = "4438d4c8-90c1-7099-0bfc-e8bd42fa23c0,chapter,908ce6dd-a65b-4727-881b-f2b275eca101";
+	//window.Namespace.message = "4438d4c8-90c1-7099-0bfc-e8bd42fa23c0,chapter,908ce6dd-a65b-4727-881b-f2b275eca101";
 	window.Namespace.nameSection;
 	window.Namespace.nameChapter;
 	
@@ -502,7 +502,7 @@ localVars.indice = indice;
 		
 			//console.log("pontuacao:" + pontuacao, "tempo" + tempo, "dificuldade: " + dificuldade, "tentativas:" + tentativas)
 		
-		    if (!respostaIA.ok) throw new Error("Erro na resposta da IA");
+		    //if (!respostaIA.ok) throw new Error("Erro na resposta da IA");
 		
 		    const dataIA = await respostaIA.json();
 		    pontuacaoIA = dataIA.pontuacao || pontuacao;
@@ -529,7 +529,7 @@ localVars.indice = indice;
 		      recomendacao: recomendacao
 		    };
 		
-		    //console.log("Enviando ao back:", jsonObjectBack);
+		    console.log("Enviando ao back:", jsonObjectBack);
 		
 		    const respostaBack = await fetch("https://ereik07xl4.execute-api.us-east-1.amazonaws.com/dev/nivelPlayer", {
 		      method: "POST",
@@ -537,7 +537,7 @@ localVars.indice = indice;
 		      body: JSON.stringify(jsonObjectBack)
 		    });
 		
-		    if (!respostaBack.ok) throw new Error("Erro na resposta do back");
+		    //if (!respostaBack.ok) throw new Error("Erro na resposta do back");
 		
 		    const respostaJson = await respostaBack.json();
 		    console.log("Sucesso:", respostaJson);
