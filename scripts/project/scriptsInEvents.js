@@ -368,8 +368,11 @@ localVars.indice = indice;
 					body: saveString
 				})
 				.then(response => response.json())
-				.then(data => console.log('Success:', data))
-				.catch(error => console.error('Error:', error));
+				.then(
+					//data => console.log('Success:', data)
+				).catch(
+					//error => console.error('Error:', error)
+				);
 	},
 
 	async FolhaDeEventos1_Event264_Act1(runtime, localVars)
@@ -390,8 +393,12 @@ localVars.indice = indice;
 					body: saveString
 				})
 				.then(response => response.json())
-				.then(data => console.log('Success:', data))
-				.catch(error => console.error('Error:', error));
+				.then(
+					//data => console.log('Success:', data)
+				)
+				.catch(
+					//error => console.error('Error:', error)
+				);
 	},
 
 	async FolhaDeEventos1_Event265_Act1(runtime, localVars)
@@ -441,8 +448,12 @@ localVars.indice = indice;
 		    body: jsonString
 		})
 		.then(response => response.json())
-		.then(data => console.log('Success:', data))
-		.catch(error => console.error('Error:', error));
+		.then(
+			//data => console.log('Success:', data)
+		)
+		.catch(
+			//error => console.error('Error:', error)
+		);
 	},
 
 	async FolhaDeEventos1_Event267_Act3(runtime, localVars)
@@ -514,7 +525,7 @@ localVars.indice = indice;
 		    //console.log("Resposta IA:", dataIA.pontuacao + " | " + dataIA.recomendacao);
 		
 		  } catch (erro) {
-		    console.warn("Erro ao obter dados da IA:", erro);
+		    //console.warn("Erro ao obter dados da IA:", erro);
 		  }
 		
 		//console.log("AAAAAAAAAAAAAAAAAAAAAAAAA:", { pontuacaoIA, recomendacao })
@@ -535,11 +546,11 @@ localVars.indice = indice;
 		
 		    //if (!respostaBack.ok) throw new Error("Erro na resposta do back");
 		
-		    const respostaJson = await respostaBack.json();
-		    console.log("Sucesso:", respostaJson);
+		    //const respostaJson = await respostaBack.json();
+		    //console.log("Sucesso:", respostaJson);
 		
 		  } catch (erro) {
-		    console.error("Erro ao enviar para o back:", erro);
+		    //console.error("Erro ao enviar para o back:", erro);
 		  }
 		}
 		
