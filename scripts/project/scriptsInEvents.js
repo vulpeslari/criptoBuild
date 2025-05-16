@@ -526,8 +526,9 @@ localVars.indice = indice;
 		    const respostaBack = await fetch("https://ereik07xl4.execute-api.us-east-1.amazonaws.com/dev/nivelPlayer", {
 		      method: "POST",
 		      headers: { "Content-Type": "application/json" },
-		      body: JSON.stringify({sub: sub,
-				[tipo === "section" ? "idSection" : "idChapter"]: id,
+		      body: JSON.stringify({
+			  	sub: sub,
+				idChapter: id,
 				pontuacao: pontuacaoIA,
 				recomendacao: recomendacao
 				})
