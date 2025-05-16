@@ -544,6 +544,8 @@ localVars.indice = indice;
 		
 		  } catch (erro) {
 		    console.error("Erro ao enviar para o back:", erro);
+			const respostaJsonn = await respostaBack.json();
+		    console.log("erro:", respostaJsonn);
 		  }
 		}
 		
