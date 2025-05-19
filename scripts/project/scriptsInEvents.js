@@ -40,7 +40,7 @@ async function main(){
 	window.Namespace.acertos = [];
 	window.parent?.postMessage('construct-ready', '*');
 	//waitForMessage();
-	//window.Namespace.message = "4438d4c8-90c1-7099-0bfc-e8bd42fa23c0,chapter,908ce6dd-a65b-4727-881b-f2b275eca101";
+	//window.Namespace.message = "4438d4c8-90c1-7099-0bfc-e8bd42fa23c0,chapter,25ba2c14-a291-4f90-a444-414252245737";
 	window.Namespace.nameSection;
 	window.Namespace.nameChapter;
 	
@@ -176,12 +176,12 @@ main();
 
 const scriptsInEvents = {
 
-	async FolhaDeEventos1_Event22_Act2(runtime, localVars)
+	async FolhaDeEventos1_Event28_Act2(runtime, localVars)
 	{
 		runtime.globalVars.existImage = true;
 	},
 
-	async FolhaDeEventos1_Event33_Act7(runtime, localVars)
+	async FolhaDeEventos1_Event31_Act7(runtime, localVars)
 	{
 // Obtém a instância atual de Lacuna
 const lacunaInstance = runtime.objects.Lacuna.getFirstPickedInstance();
@@ -224,7 +224,7 @@ const indice = findWordIndex(words, resposta);
 localVars.indice = indice;
 	},
 
-	async FolhaDeEventos1_Event96_Act1(runtime, localVars)
+	async FolhaDeEventos1_Event94_Act1(runtime, localVars)
 	{
 		// Obtém a resposta a ser comparada
 		const respostaLacunaNormalizada = normalizeWord(localVars.respostaLacuna);
@@ -258,22 +258,22 @@ localVars.indice = indice;
 		localVars.iidLacuna = idEncontrado; 
 	},
 
-	async FolhaDeEventos1_Event151_Act1(runtime, localVars)
+	async FolhaDeEventos1_Event149_Act1(runtime, localVars)
 	{
 
 	},
 
-	async FolhaDeEventos1_Event167_Act20(runtime, localVars)
-	{
-		window.parent.postMessage({ type: 'GAME_FINISHED' }, '*');
-	},
-
-	async FolhaDeEventos1_Event169_Act18(runtime, localVars)
+	async FolhaDeEventos1_Event165_Act20(runtime, localVars)
 	{
 		window.parent.postMessage({ type: 'GAME_FINISHED' }, '*');
 	},
 
-	async FolhaDeEventos1_Event211_Act13(runtime, localVars)
+	async FolhaDeEventos1_Event167_Act18(runtime, localVars)
+	{
+		window.parent.postMessage({ type: 'GAME_FINISHED' }, '*');
+	},
+
+	async FolhaDeEventos1_Event209_Act13(runtime, localVars)
 	{
 		// CARREGA O JSON A PARTIR DA VARIAVEL GLOBAL SYMBOLS
 		const symbolsJSON = runtime.globalVars.symbols;
@@ -292,23 +292,23 @@ localVars.indice = indice;
 		simboloInstance.instVars.letter = frameLetter
 	},
 
-	async FolhaDeEventos1_Event215_Act2(runtime, localVars)
+	async FolhaDeEventos1_Event213_Act2(runtime, localVars)
 	{
 		window.Namespace.tipLetterRandom = localVars.aux
 	},
 
-	async FolhaDeEventos1_Event227_Act7(runtime, localVars)
+	async FolhaDeEventos1_Event225_Act7(runtime, localVars)
 	{
 		window.Namespace.tipContentUsed = true;
 	},
 
-	async FolhaDeEventos1_Event239_Act6(runtime, localVars)
+	async FolhaDeEventos1_Event237_Act6(runtime, localVars)
 	{
 		window.Namespace.tipLetterSelected = localVars.aux
 		
 	},
 
-	async FolhaDeEventos1_Event251_Act1(runtime, localVars)
+	async FolhaDeEventos1_Event249_Act1(runtime, localVars)
 	{
 		
 		
@@ -325,27 +325,27 @@ localVars.indice = indice;
 		window.Namespace.session.rawData = JSON.stringify(save)
 	},
 
-	async FolhaDeEventos1_Event252_Act1(runtime, localVars)
+	async FolhaDeEventos1_Event250_Act1(runtime, localVars)
 	{
 		window.parent.postMessage({ type: 'GAME_FINISHED' }, '*');
 	},
 
-	async FolhaDeEventos1_Event254_Act1(runtime, localVars)
+	async FolhaDeEventos1_Event252_Act1(runtime, localVars)
 	{
 		window.parent.postMessage({ type: 'GAME_NEXT' }, '*');
 	},
 
-	async FolhaDeEventos1_Event257_Act1(runtime, localVars)
+	async FolhaDeEventos1_Event255_Act1(runtime, localVars)
 	{
 		window.parent.postMessage({ type: 'GAME_BACK' }, '*');
 	},
 
-	async FolhaDeEventos1_Event260_Act1(runtime, localVars)
+	async FolhaDeEventos1_Event258_Act1(runtime, localVars)
 	{
 		window.parent.postMessage({ type: 'GAME_REFRESH' }, '*');
 	},
 
-	async FolhaDeEventos1_Event263_Act1(runtime, localVars)
+	async FolhaDeEventos1_Event261_Act1(runtime, localVars)
 	{
 		let jogador = window.Namespace.message.split(',')[0];
 		window.Namespace.saveJSON = {
@@ -375,7 +375,7 @@ localVars.indice = indice;
 				);
 	},
 
-	async FolhaDeEventos1_Event264_Act1(runtime, localVars)
+	async FolhaDeEventos1_Event262_Act1(runtime, localVars)
 	{
 		let jogador = window.Namespace.message.split(',')[0];
 		
@@ -401,7 +401,7 @@ localVars.indice = indice;
 				);
 	},
 
-	async FolhaDeEventos1_Event265_Act1(runtime, localVars)
+	async FolhaDeEventos1_Event263_Act1(runtime, localVars)
 	{
 		function generateUUID() {
 		    // Gera um UUID v4 no formato padrão
@@ -456,7 +456,7 @@ localVars.indice = indice;
 		);
 	},
 
-	async FolhaDeEventos1_Event267_Act3(runtime, localVars)
+	async FolhaDeEventos1_Event265_Act3(runtime, localVars)
 	{
 		const textQuestoes = runtime.objects.textQuestao.getAllInstances();
 		
@@ -488,7 +488,7 @@ localVars.indice = indice;
 		});
 	},
 
-	async FolhaDeEventos1_Event267_Act4(runtime, localVars)
+	async FolhaDeEventos1_Event265_Act4(runtime, localVars)
 	{
 		async function enviarDados() {
 		  const tempo = localVars.tempo;
