@@ -643,7 +643,7 @@ function Tick(runtime) {
 				//Salvar malha
 				window.Namespace.board = boardSave;
 				window.Namespace.question = questionSave;
-				//console.log(boardSave)
+				console.log(boardSave)
 				 const save = { words: boardSave, 
 				 questions: questionSave, 
 				 nameSection: runtime.globalVars.nomeSecao, 
