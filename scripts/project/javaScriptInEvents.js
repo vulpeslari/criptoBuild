@@ -32,7 +32,7 @@ window.Namespace.tipLetterRandom = "";
 window.Namespace.tipLetterSelected = "";
 
 async function main(){
-   	await waitForMessage()
+   	//await waitForMessage()
 	//console.log(window.Namespace.message)
 	// Função que verifica se deve recarregar o jogo salvo
 	window.Namespace.questionsOnly = [];
@@ -40,7 +40,7 @@ async function main(){
 	window.Namespace.acertos = [];
 	window.parent?.postMessage('construct-ready', '*');
 	//waitForMessage();
-	//window.Namespace.message = "948824b8-3051-7039-4c64-153b0f6c8dc8,chapter,8702111d-0f8e-465b-81db-518a7fbdc844";
+	window.Namespace.message = "948824b8-3051-7039-4c64-153b0f6c8dc8,chapter,8702111d-0f8e-465b-81db-518a7fbdc844";
 	window.Namespace.nameSection;
 	window.Namespace.nameChapter;
 	
@@ -290,7 +290,7 @@ localVars.indice = indice;
 
 	},
 
-	async FolhaDeEventos1_Event165_Act20(runtime, localVars)
+	async FolhaDeEventos1_Event165_Act21(runtime, localVars)
 	{
 		window.parent.postMessage({ type: 'GAME_FINISHED' }, '*');
 	},
