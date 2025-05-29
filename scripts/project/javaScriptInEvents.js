@@ -32,7 +32,7 @@ window.Namespace.tipLetterRandom = "";
 window.Namespace.tipLetterSelected = "";
 
 async function main(){
-   	//await waitForMessage()
+   	await waitForMessage()
 	//console.log(window.Namespace.message)
 	// Função que verifica se deve recarregar o jogo salvo
 	window.Namespace.questionsOnly = [];
@@ -40,7 +40,7 @@ async function main(){
 	window.Namespace.acertos = [];
 	window.parent?.postMessage('construct-ready', '*');
 	//waitForMessage();
-	window.Namespace.message = "948824b8-3051-7039-4c64-153b0f6c8dc8,chapter,8702111d-0f8e-465b-81db-518a7fbdc844";
+	//window.Namespace.message = "948824b8-3051-7039-4c64-153b0f6c8dc8,chapter,8702111d-0f8e-465b-81db-518a7fbdc844";
 	window.Namespace.nameSection;
 	window.Namespace.nameChapter;
 	
@@ -319,23 +319,23 @@ localVars.indice = indice;
 		simboloInstance.instVars.letter = frameLetter
 	},
 
-	async FolhaDeEventos1_Event213_Act2(runtime, localVars)
+	async FolhaDeEventos1_Event214_Act2(runtime, localVars)
 	{
 		window.Namespace.tipLetterRandom = localVars.aux
 	},
 
-	async FolhaDeEventos1_Event225_Act7(runtime, localVars)
+	async FolhaDeEventos1_Event226_Act7(runtime, localVars)
 	{
 		window.Namespace.tipContentUsed = true;
 	},
 
-	async FolhaDeEventos1_Event237_Act6(runtime, localVars)
+	async FolhaDeEventos1_Event241_Act6(runtime, localVars)
 	{
 		window.Namespace.tipLetterSelected = localVars.aux
 		
 	},
 
-	async FolhaDeEventos1_Event249_Act1(runtime, localVars)
+	async FolhaDeEventos1_Event253_Act1(runtime, localVars)
 	{
 		
 		
@@ -352,27 +352,27 @@ localVars.indice = indice;
 		window.Namespace.session.rawData = JSON.stringify(save)
 	},
 
-	async FolhaDeEventos1_Event250_Act1(runtime, localVars)
+	async FolhaDeEventos1_Event254_Act1(runtime, localVars)
 	{
 		window.parent.postMessage({ type: 'GAME_FINISHED' }, '*');
 	},
 
-	async FolhaDeEventos1_Event252_Act1(runtime, localVars)
+	async FolhaDeEventos1_Event256_Act1(runtime, localVars)
 	{
 		window.parent.postMessage({ type: 'GAME_NEXT' }, '*');
 	},
 
-	async FolhaDeEventos1_Event255_Act1(runtime, localVars)
+	async FolhaDeEventos1_Event259_Act1(runtime, localVars)
 	{
 		window.parent.postMessage({ type: 'GAME_BACK' }, '*');
 	},
 
-	async FolhaDeEventos1_Event258_Act1(runtime, localVars)
+	async FolhaDeEventos1_Event262_Act1(runtime, localVars)
 	{
 		window.parent.postMessage({ type: 'GAME_REFRESH' }, '*');
 	},
 
-	async FolhaDeEventos1_Event261_Act1(runtime, localVars)
+	async FolhaDeEventos1_Event265_Act1(runtime, localVars)
 	{
 		let jogador = window.Namespace.message.split(',')[0];
 		window.Namespace.saveJSON = {
@@ -402,7 +402,7 @@ localVars.indice = indice;
 				);
 	},
 
-	async FolhaDeEventos1_Event262_Act1(runtime, localVars)
+	async FolhaDeEventos1_Event266_Act1(runtime, localVars)
 	{
 		let jogador = window.Namespace.message.split(',')[0];
 		
@@ -428,7 +428,7 @@ localVars.indice = indice;
 				);
 	},
 
-	async FolhaDeEventos1_Event263_Act1(runtime, localVars)
+	async FolhaDeEventos1_Event267_Act1(runtime, localVars)
 	{
 		function generateUUID() {
 		    // Gera um UUID v4 no formato padrão
@@ -483,7 +483,7 @@ localVars.indice = indice;
 		);
 	},
 
-	async FolhaDeEventos1_Event265_Act3(runtime, localVars)
+	async FolhaDeEventos1_Event269_Act3(runtime, localVars)
 	{
 		const textQuestoes = runtime.objects.textQuestao.getAllInstances();
 		
@@ -515,7 +515,7 @@ localVars.indice = indice;
 		});
 	},
 
-	async FolhaDeEventos1_Event265_Act4(runtime, localVars)
+	async FolhaDeEventos1_Event269_Act4(runtime, localVars)
 	{
 		async function enviarDados() {
 		  const tempo = localVars.tempo;
