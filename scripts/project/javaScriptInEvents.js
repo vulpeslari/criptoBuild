@@ -1,6 +1,7 @@
 // Namespace da questão, para poder acessar em outro script
 window.Namespace = window.Namespace || {};
 window.Namespace.nameSectionOrChapter = []
+window.Namespace.moedas = []
 
 function waitForMessage() {
     return new Promise((resolve) => {
@@ -40,9 +41,10 @@ async function main(){
 	window.Namespace.acertos = [];
 	window.parent?.postMessage('construct-ready', '*');
 	//waitForMessage();
-	//window.Namespace.message = "948824b8-3051-7039-4c64-153b0f6c8dc8,chapter,8702111d-0f8e-465b-81db-518a7fbdc844";
+	//window.Namespace.message = "948824b8-3051-7039-4c64-153b0f6c8dc8,chapter,25ba2c14-a291-4f90-a444-414252245737";
 	window.Namespace.nameSection;
 	window.Namespace.nameChapter;
+	window.Namespace.moedas;
 	
 	const parts = window.Namespace.message.split(",");
 	const isSection = parts[1] === "section";
@@ -136,6 +138,24 @@ async function main(){
 			console.error('Failed to fetch data:', error);
 		}
 	}
+
+	function getCoin() {
+      try {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", `https://ereik07xl4.execute-api.us-east-1.amazonaws.com/dev/coins/${idUser}`, false);
+        xhr.send(null);
+        if (xhr.status === 200) {
+          var data = JSON.parse(xhr.responseText);
+          window.Namespace.moedas = data.coins;
+          //console.log("Saldo: ", data.coins)
+        } else {
+          throw new Error('Network response was not ok');
+        }
+      } catch (error) {
+        console.error('Failed to fetch data:', error);
+      }
+}
+
     // Função que puxa o nome da seção ou capítulo
 	function callName(){
 		try {
@@ -190,6 +210,7 @@ async function main(){
 	getReloadStatus();
 	if (!window.Namespace.reload) {
 		initialize()
+		getCoin()
 		callName()
 	}
 	else{
@@ -290,17 +311,33 @@ localVars.indice = indice;
 
 	},
 
-	async FolhaDeEventos1_Event165_Act21(runtime, localVars)
+	async FolhaDeEventos1_Event165_Act20(runtime, localVars)
 	{
 		window.parent.postMessage({ type: 'GAME_FINISHED' }, '*');
 	},
 
-	async FolhaDeEventos1_Event167_Act18(runtime, localVars)
+	async FolhaDeEventos1_Event167_Act17(runtime, localVars)
 	{
 		window.parent.postMessage({ type: 'GAME_FINISHED' }, '*');
 	},
 
-	async FolhaDeEventos1_Event209_Act13(runtime, localVars)
+	async FolhaDeEventos1_Event176_Act1(runtime, localVars)
+	{
+let amountJson = {
+    "amount": localVars.saldo,
+  };
+
+  let amountString = JSON.stringify(amountJson);
+
+  fetch(`https://ereik07xl4.execute-api.us-east-1.amazonaws.com/dev/coins/${window.Namespace.message.split(',')[0]}`, {
+    method: "POST",
+    body: amountString
+  })
+    .then(response => response.json())
+    .catch(error => console.error('Error:', error));
+	},
+
+	async FolhaDeEventos1_Event210_Act13(runtime, localVars)
 	{
 		// CARREGA O JSON A PARTIR DA VARIAVEL GLOBAL SYMBOLS
 		const symbolsJSON = runtime.globalVars.symbols;
@@ -319,23 +356,23 @@ localVars.indice = indice;
 		simboloInstance.instVars.letter = frameLetter
 	},
 
-	async FolhaDeEventos1_Event214_Act2(runtime, localVars)
+	async FolhaDeEventos1_Event215_Act2(runtime, localVars)
 	{
 		window.Namespace.tipLetterRandom = localVars.aux
 	},
 
-	async FolhaDeEventos1_Event226_Act7(runtime, localVars)
+	async FolhaDeEventos1_Event227_Act8(runtime, localVars)
 	{
 		window.Namespace.tipContentUsed = true;
 	},
 
-	async FolhaDeEventos1_Event241_Act6(runtime, localVars)
+	async FolhaDeEventos1_Event242_Act13(runtime, localVars)
 	{
 		window.Namespace.tipLetterSelected = localVars.aux
 		
 	},
 
-	async FolhaDeEventos1_Event253_Act1(runtime, localVars)
+	async FolhaDeEventos1_Event254_Act1(runtime, localVars)
 	{
 		
 		
@@ -352,27 +389,27 @@ localVars.indice = indice;
 		window.Namespace.session.rawData = JSON.stringify(save)
 	},
 
-	async FolhaDeEventos1_Event254_Act1(runtime, localVars)
+	async FolhaDeEventos1_Event255_Act1(runtime, localVars)
 	{
 		window.parent.postMessage({ type: 'GAME_FINISHED' }, '*');
 	},
 
-	async FolhaDeEventos1_Event256_Act1(runtime, localVars)
+	async FolhaDeEventos1_Event257_Act1(runtime, localVars)
 	{
 		window.parent.postMessage({ type: 'GAME_NEXT' }, '*');
 	},
 
-	async FolhaDeEventos1_Event259_Act1(runtime, localVars)
+	async FolhaDeEventos1_Event260_Act1(runtime, localVars)
 	{
 		window.parent.postMessage({ type: 'GAME_BACK' }, '*');
 	},
 
-	async FolhaDeEventos1_Event262_Act1(runtime, localVars)
+	async FolhaDeEventos1_Event263_Act1(runtime, localVars)
 	{
 		window.parent.postMessage({ type: 'GAME_REFRESH' }, '*');
 	},
 
-	async FolhaDeEventos1_Event265_Act1(runtime, localVars)
+	async FolhaDeEventos1_Event266_Act1(runtime, localVars)
 	{
 		let jogador = window.Namespace.message.split(',')[0];
 		window.Namespace.saveJSON = {
@@ -402,7 +439,7 @@ localVars.indice = indice;
 				);
 	},
 
-	async FolhaDeEventos1_Event266_Act1(runtime, localVars)
+	async FolhaDeEventos1_Event267_Act1(runtime, localVars)
 	{
 		let jogador = window.Namespace.message.split(',')[0];
 		
@@ -428,7 +465,7 @@ localVars.indice = indice;
 				);
 	},
 
-	async FolhaDeEventos1_Event267_Act1(runtime, localVars)
+	async FolhaDeEventos1_Event268_Act1(runtime, localVars)
 	{
 		function generateUUID() {
 		    // Gera um UUID v4 no formato padrão
@@ -483,7 +520,7 @@ localVars.indice = indice;
 		);
 	},
 
-	async FolhaDeEventos1_Event269_Act3(runtime, localVars)
+	async FolhaDeEventos1_Event270_Act3(runtime, localVars)
 	{
 		const textQuestoes = runtime.objects.textQuestao.getAllInstances();
 		
@@ -515,7 +552,7 @@ localVars.indice = indice;
 		});
 	},
 
-	async FolhaDeEventos1_Event269_Act4(runtime, localVars)
+	async FolhaDeEventos1_Event270_Act4(runtime, localVars)
 	{
 		async function enviarDados() {
 		  const tempo = localVars.tempo;
@@ -547,6 +584,10 @@ localVars.indice = indice;
 		    recomendacao = dataIA.recomendacao || "media";
 			const score = runtime.objects.jogPontuacao.getFirstInstance();
 			score.text = Math.floor(pontuacaoIA).toString();
+			const coins = runtime.objects.jogMoedas.getFirstInstance();
+			coins.text = "+" + Math.floor(pontuacaoIA/2).toString();
+			runtime.callFunction("attMoedas", Math.floor(pontuacaoIA/2).toString())
+				
 			//score.runtime.redraw();
 		
 		    //console.log("Resposta IA:", dataIA.pontuacao + " | " + dataIA.recomendacao);

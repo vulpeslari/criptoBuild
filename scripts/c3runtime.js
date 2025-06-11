@@ -1819,25 +1819,6 @@ self.C3_ExpressionFuncs = [
 			return () => ((((n0.ExpObject()) === (n1.ExpObject()) ? 1 : 0)) ? (((n2.ExpObject()) > (6) ? 1 : 0)) : ((n3.ExpObject() - 1)));
 		},
 		p => {
-			const v0 = p._GetNode(0).GetVar();
-			const f1 = p._GetNode(1).GetBoundMethod();
-			const v2 = p._GetNode(2).GetVar();
-			const v3 = p._GetNode(3).GetVar();
-			const v4 = p._GetNode(4).GetVar();
-			const v5 = p._GetNode(5).GetVar();
-			const f6 = p._GetNode(6).GetBoundMethod();
-			const v7 = p._GetNode(7).GetVar();
-			const v8 = p._GetNode(8).GetVar();
-			const v9 = p._GetNode(9).GetVar();
-			const v10 = p._GetNode(10).GetVar();
-			const v11 = p._GetNode(11).GetVar();
-			return () => ((((v0.GetValue()) === (0) ? 1 : 0)) ? (f1(((((v2.GetValue() - v3.GetValue()) / v4.GetValue()) * 100) + ((v5.GetValue() / 1) * 100)))) : (f6(((((v7.GetValue() - v8.GetValue()) / v9.GetValue()) * 100) + ((v10.GetValue() / v11.GetValue()) * 100)))));
-		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => Math.floor((v0.GetValue() / 10));
-		},
-		p => {
 			const n0 = p._GetNode(0);
 			const v1 = p._GetNode(1).GetVar();
 			return () => ((n0.ExpInstVar()) === (v1.GetValue()) ? 1 : 0);
@@ -1860,10 +1841,6 @@ self.C3_ExpressionFuncs = [
 			const v0 = p._GetNode(0).GetVar();
 			const n1 = p._GetNode(1);
 			return () => ((v0.GetValue()) === (n1.ExpObject()) ? 1 : 0);
-		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => and("+", v0.GetValue());
 		},
 		p => {
 			const v0 = p._GetNode(0).GetVar();
@@ -2017,6 +1994,10 @@ self.C3_ExpressionFuncs = [
 		p => {
 			const v0 = p._GetNode(0).GetVar();
 			return () => and("- ", v0.GetValue());
+		},
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => (-v0.GetValue());
 		},
 		p => {
 			const n0 = p._GetNode(0);
